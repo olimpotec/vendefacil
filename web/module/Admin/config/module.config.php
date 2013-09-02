@@ -63,6 +63,17 @@ return array(
         'aliases' => array(
             'translator' => 'MvcTranslator',
         ),
+        'factories' => array(
+        		'Session' => function($sm) {
+        			return new Zend\Session\Container('vendefacil');
+        		},
+        		'Admin\Service\Auth' => function($sm) {
+        			
+        			$dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+        			$dbAdapter->getDriver()->getConnection()->execute ('SET SEARCH_PATH = titan,version');
+        			return new Admin\Service\Auth($dbAdapter, $sm);
+        		},
+        ),
     ),
     'translator' => array(
         'locale' => 'en_US',
@@ -76,7 +87,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Admin\Controller\Index' => 'Admin\Controller\IndexController'
+            'Admin\Controller\Index' => 'Admin\Controller\IndexController',
+        	'Admin\Controller\Auth' => 'Admin\Controller\AuthController',
         ),
     ),
     'view_manager' => array(
@@ -102,4 +114,19 @@ return array(
             ),
         ),
     ),
+    'doctrine' => array(
+    		'driver' => array(
+    				__NAMESPACE__ . '_driver' => array(
+    						'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+    						'cache' => 'array',
+    						'paths' => array(__DIR__ . '/../src/Admin/Model')
+    				),
+    				'orm_default' => array(
+    						'drivers' => array(
+    								__NAMESPACE__ . 'Admin\Model' => __NAMESPACE__ . '_driver'
+    						)
+    				)
+    		)
+    ),
+   
 );
