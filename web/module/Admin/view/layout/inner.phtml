@@ -1,0 +1,584 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Vende F&aacute;cil '. $this->translate('Compre e Venda de tudo pelo Celular'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendName('author', 'Olimpo Tecnologia')
+            ->appendName('description', 'Pague a conta do bar, balada, restaurante pelo celular.
+			Compre produtos nas vitrines das lojas via QRcode')
+            ->appendName('keyword', 'vender,compra mobile, compra pelo celular, vender qrcode')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+        
+      
+		
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath() . '/css/style.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/retina.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+	
+		
+	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	  	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<link id="ie-style" href="css/ie.css" rel="stylesheet">
+	<![endif]-->
+	
+	<!--[if IE 9]>
+		<link id="ie9style" href="css/ie9.css" rel="stylesheet">
+	<![endif]-->
+	
+	
+       
+    </head>
+    <body>
+		<!-- start: Header -->
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container">
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".sidebar-nav.nav-collapse">
+				      <span class="icon-bar"></span>
+				      <span class="icon-bar"></span>
+				      <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"><span><?php echo $this->translate('Vende F&aacute;cil'); ?></span></a>
+								
+				<!-- start: Header Menu -->
+				<div class="nav-no-collapse header-nav">
+					<ul class="nav pull-right">
+						<li class="dropdown hidden-xs">
+							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+								<i class="halflings-icon white warning-sign"></i>
+							</a>
+							<ul class="dropdown-menu notifications">
+								<li>
+									<span class="dropdown-menu-title">You have 11 notifications</span>
+								</li>	
+                            	<li>
+                                    <a href="#">
+										+ <i class="halflings-icon white user"></i> <span class="message">New user registration</span> <span class="time">1 min</span> 
+                                    </a>
+                                </li>
+								<li>
+                                    <a href="#">
+										+ <i class="halflings-icon white comment"></i> <span class="message">New comment</span> <span class="time">7 min</span> 
+                                    </a>
+                                </li>
+								<li>
+                                    <a href="#">
+										+ <i class="halflings-icon white comment"></i> <span class="message">New comment</span> <span class="time">8 min</span> 
+                                    </a>
+                                </li>
+								<li>
+                                    <a href="#">
+										+ <i class="halflings-icon white comment"></i> <span class="message">New comment</span> <span class="time">16 min</span> 
+                                    </a>
+                                </li>
+								<li>
+                                    <a href="#">
+										+ <i class="halflings-icon white user"></i> <span class="message">New user registration</span> <span class="time">36 min</span> 
+                                    </a>
+                                </li>
+								<li>
+                                    <a href="#">
+										+ <i class="halflings-icon white cart"></i> <span class="message">2 items sold</span> <span class="time">1 hour</span> 
+                                    </a>
+                                </li>
+								<li class="warning">
+                                    <a href="#">
+										- <i class="halflings-icon white user"></i> <span class="message">User deleted account</span> <span class="time">2 hour</span> 
+                                    </a>
+                                </li>
+								<li class="warning">
+                                    <a href="#">
+										- <i class="halflings-icon white shopping-cart"></i> <span class="message">Transaction was canceled</span> <span class="time">6 hour</span> 
+                                    </a>
+                                </li>
+								<li>
+                                    <a href="#">
+										+ <i class="halflings-icon white comment"></i> <span class="message">New comment</span> <span class="time">yesterday</span> 
+                                    </a>
+                                </li>
+								<li>
+                                    <a href="#">
+										+ <i class="halflings-icon white user"></i> <span class="message">New user registration</span> <span class="time">yesterday</span> 
+                                    </a>
+                                </li>
+                                <li>
+                            		<a class="dropdown-menu-sub-footer">View all notifications</a>
+								</li>	
+							</ul>
+						</li>
+						<!-- start: Notifications Dropdown -->
+						<li class="dropdown hidden-xs">
+							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+								<i class="halflings-icon white tasks"></i>
+							</a>
+							<ul class="dropdown-menu tasks">
+								<li>
+									<span class="dropdown-menu-title">You have 17 tasks in progress</span>
+                            	</li>
+								<li>
+                                    <a href="#">
+										<span class="header">
+											<span class="title">iOS Development</span>
+											<span class="percent"></span>
+										</span>
+                                        <div class="taskProgress progressSlim progressBlue">80</div> 
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+										<span class="header">
+											<span class="title">Android Development</span>
+											<span class="percent"></span>
+										</span>
+                                        <div class="taskProgress progressSlim progressBlue">47</div> 
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+										<span class="header">
+											<span class="title">Django Project For Google</span>
+											<span class="percent"></span>
+										</span>
+                                        <div class="taskProgress progressSlim progressBlue">32</div> 
+                                    </a>
+                                </li>
+								<li>
+                                    <a href="#">
+										<span class="header">
+											<span class="title">SEO for new sites</span>
+											<span class="percent"></span>
+										</span>
+                                        <div class="taskProgress progressSlim progressBlue">63</div> 
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+										<span class="header">
+											<span class="title">New blog posts</span>
+											<span class="percent"></span>
+										</span>
+                                        <div class="taskProgress progressSlim progressBlue">80</div> 
+                                    </a>
+                                </li>
+								<li>
+                            		<a class="dropdown-menu-sub-footer">View all tasks</a>
+								</li>	
+							</ul>
+						</li>
+						<!-- end: Notifications Dropdown -->
+						<!-- start: Message Dropdown -->
+						<li class="dropdown hidden-xs">
+							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+								<i class="halflings-icon white envelope"></i>
+							</a>
+							<ul class="dropdown-menu messages">
+								<li>
+									<span class="dropdown-menu-title">You have 9 messages</span>
+								</li>	
+                            	<li>
+                                    <a href="#">
+										<span class="avatar"><img src="<?php echo $this->basePath()?>/img/avatar.jpg" alt="Avatar"></span>
+										<span class="header">
+											<span class="from">
+										    	Łukasz Holeczek
+										     </span>
+											<span class="time">
+										    	6 min
+										    </span>
+										</span>
+                                        <span class="message">
+                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                        </span>  
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+										<span class="avatar"><img src="<?php echo $this->basePath()?>/img/avatar2.jpg" alt="Avatar"></span>
+										<span class="header">
+											<span class="from">
+										    	Megan Abott
+										     </span>
+											<span class="time">
+										    	56 min
+										    </span>
+										</span>
+                                        <span class="message">
+                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                        </span>  
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+										<span class="avatar"><img src="<?php echo $this->basePath()?>/img/avatar3.jpg" alt="Avatar"></span>
+										<span class="header">
+											<span class="from">
+										    	Kate Ross
+										     </span>
+											<span class="time">
+										    	3 hours
+										    </span>
+										</span>
+                                        <span class="message">
+                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                        </span>  
+                                    </a>
+                                </li>
+								<li>
+                                    <a href="#">
+										<span class="avatar"><img src="<?php echo $this->basePath()?>/img/avatar4.jpg" alt="Avatar"></span>
+										<span class="header">
+											<span class="from">
+										    	Julie Blank
+										     </span>
+											<span class="time">
+										    	yesterday
+										    </span>
+										</span>
+                                        <span class="message">
+                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                        </span>  
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+										<span class="avatar"><img src="<?php echo $this->basePath()?>/img/avatar5.jpg" alt="Avatar"></span>
+										<span class="header">
+											<span class="from">
+										    	Jane Sanders
+										     </span>
+											<span class="time">
+										    	Jul 25, 2012
+										    </span>
+										</span>
+                                        <span class="message">
+                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                        </span>  
+                                    </a>
+                                </li>
+								<li>
+                            		<a class="dropdown-menu-sub-footer">View all messages</a>
+								</li>	
+							</ul>
+						</li>
+						<!-- end: Message Dropdown -->
+						<li>
+							<a class="btn" href="#">
+								<i class="halflings-icon white wrench"></i>
+							</a>
+						</li>
+						<!-- start: User Dropdown -->
+						<li class="dropdown">
+							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+								<i class="halflings-icon white user"></i> Łukasz Holeczek
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="#"><i class="halflings-icon white user"></i> Profile</a></li>
+								<li><a href="login.html"><i class="halflings-icon white off"></i> Logout</a></li>
+							</ul>
+						</li>
+						<!-- end: User Dropdown -->
+					</ul>
+				</div>
+				<!-- end: Header Menu -->
+				
+			</div>
+		</div>
+	</div>
+	<!-- start: Header -->
+	
+		<div class="container">
+		<div class="row">
+
+				
+			<!-- start: Main Menu -->
+			<div id="sidebar-left" class="col-sm-1">
+				<div class="nav-collapse sidebar-nav collapse navbar-collapse bs-navbar-collapse">
+					<ul class="nav nav-tabs nav-stacked main-menu">
+						<li><a href="index.html"><i class="icon-bar-chart"></i><span class="hidden-sm"> Dashboard</span></a></li>	
+						<li><a href="infrastructure.html"><i class="icon-hdd"></i><span class="hidden-sm"> Infrastructure</span></a></li>
+						<li><a href="messages.html"><i class="icon-envelope"></i><span class="hidden-sm"> Messages</span></a></li>
+						<li><a href="tasks.html"><i class="icon-tasks"></i><span class="hidden-sm"> Tasks</span></a></li>
+						<li><a href="ui.html"><i class="icon-eye-open"></i><span class="hidden-sm"> UI Features</span></a></li>
+						<li><a href="widgets.html"><i class="icon-dashboard"></i><span class="hidden-sm"> Widgets</span></a></li>
+						<li><a href="form.html"><i class="icon-edit"></i><span class="hidden-sm"> Forms</span></a></li>
+						<li><a href="chart.html"><i class="icon-list-alt"></i><span class="hidden-sm"> Charts</span></a></li>
+						<li><a href="typography.html"><i class="icon-font"></i><span class="hidden-sm"> Typography</span></a></li>
+						<li><a href="gallery.html"><i class="icon-picture"></i><span class="hidden-sm"> Gallery</span></a></li>
+						<li><a href="table.html"><i class="icon-align-justify"></i><span class="hidden-sm"> Tables</span></a></li>
+						<li><a href="calendar.html"><i class="icon-calendar"></i><span class="hidden-sm"> Calendar</span></a></li>
+						<li><a href="file-manager.html"><i class="icon-folder-open"></i><span class="hidden-sm"> File Manager</span></a></li>
+						<li>
+							<a class="dropmenu" href="#"><i class="icon-star"></i><span class="hidden-sm"> Icons</span><span class="badge badge-important">3</span></a>
+							<ul>
+								<li><a class="submenu" href="halflings.html"><i class="icon-star"></i><span class="hidden-sm"> Halflings</span></a></li>
+								<li><a class="submenu" href="glyphiconspro.html"><i class="icon-star"></i><span class="hidden-sm"> Glyphicons PRO</span></a></li>
+								<li><a class="submenu" href="fontawesome.html"><i class="icon-star"></i><span class="hidden-sm"> Font Awesome</span></a></li>
+							</ul>
+						</li>
+						<li><a href="login.html"><i class="icon-lock"></i><span class="hidden-sm"> Login Page</span></a></li>
+					</ul>
+				</div>
+			</div>
+			<a id="main-menu-toggle" class="hidden-xs open"><i class="icon-reorder"></i></a>
+			<!-- end: Main Menu -->
+
+			
+			<!-- start: Content -->
+			<div id="content" class="col-sm-11">
+				<?php echo $this->content; ?>
+			
+			
+			</div>
+			<!-- end: Content -->
+			
+			<!-- start: Widgets Area -->
+<div id="widgets-area" class="col-sm-2">
+	
+	<ul class="nav tab-menu nav-tabs" id="myTab">
+		<li class="active"><a href="#charts"><i class="icon-bar-chart"></i></a></li>
+		<li><a href="#users"><i class="icon-group"></i></a></li>
+		<li><a href="#messages"><i class="icon-envelope"></i></a></li>
+		<li><a id="close-widgets-area" href="#"><i class="icon-signin"></i></a></li>
+	</ul>
+	 
+	<div id="myTabContent" class="tab-content">
+		<div class="tab-pane active" id="charts">
+			
+			<div class="bar-stat">
+				<span class="title">Account balance</span>
+				<span class="value">$19 999,99</span>
+				<span class="chart green">7,3,2,6,6,3,9,0,1,4</span>
+			</div>
+
+			<hr>
+
+			<div class="bar-stat">
+				<span class="title">Clients</span>
+				<span class="value">1278</span>
+				<span class="chart yellow">8,2,5,4,7,4,7,2,5,9</span>
+			</div>
+
+			<hr>
+
+			<div class="bar-stat">
+				<span class="title">Orders</span>
+				<span class="value">5876</span>
+				<span class="chart blue">2,4,6,8,3,5,9,3,2,2</span>
+			</div>
+
+			<hr>
+
+			<div class="bar-stat">
+				<span class="title">Messages</span>
+				<span class="value">673</span>
+				<span class="chart red">0,3,3,8,3,3,2,7,8,4</span>
+			</div>
+			
+			<hr>
+			
+			<div id="cpu-usage"></div>
+			
+			<ul class="progress-bars">
+				
+				<li>
+					<span class="title">Free Memory</span>
+					<span class="percent"></span>
+					<div class="taskProgress progressSlim progressGreen">80</div>
+				</li>
+				
+				<li>
+					<span class="title">Free HDD Drive</span>
+					<span class="percent"></span>
+					<div class="taskProgress progressSlim progressYellow">20</div>
+				</li>
+				
+				<li>
+					<span class="title">Free SSD Drive</span>
+					<span class="percent"></span>
+					<div class="taskProgress progressSlim progressBlue">57</div>
+				</li>
+				
+				<li>
+					<span class="title">Transfer</span>
+					<span class="percent"></span>
+					<div class="taskProgress progressSlim progressRed">45</div>
+				</li>	
+				
+			</ul>	
+
+		</div>
+		<div class="tab-pane" id="users">
+			
+			<ul class="users-list">
+            	<li>
+                    <a href="#">
+						<span class="status active"></span>
+						<span class="avatar"><img class="img-circle" src="<?php echo $this->basePath()?>/img/avatar.jpg" alt="Avatar"></span>
+						<span class="name">Łukasz Holeczek</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+						<span class="status busy"></span>
+						<span class="avatar"><img class="img-circle" src="<?php echo $this->basePath()?>/img/avatar2.jpg" alt="Avatar"></span>
+						<span class="name">Megan Abott</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+						<span class="status disable"></span>
+						<span class="avatar"><img class="img-circle" src="<?php echo $this->basePath()?>/img/avatar3.jpg" alt="Avatar"></span>
+						<span class="name">Kate Ross</span>
+                    </a>
+                </li>
+				<li>
+                    <a href="#">
+						<span class="status active"></span>
+						<span class="avatar"><img class="img-circle" src="<?php echo $this->basePath()?>/img/avatar4.jpg" alt="Avatar"></span>
+						<span class="name">Julie Blank</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+						<span class="status"></span>
+						<span class="avatar"><img class="img-circle" src="<?php echo $this->basePath()?>/img/avatar5.jpg" alt="Avatar"></span>
+						<span class="name">Jane Sanders</span>
+                    </a>
+                </li>
+				<li>
+            		<a href="#">View all users</a>
+				</li>	
+			</ul>
+
+		</div>
+		<div class="tab-pane" id="messages">
+			
+			<ul class="messages-list">
+            	<li>
+                    <a href="#">
+						<div class="avatar"><img class="img-circle" src="<?php echo $this->basePath()?>/img/avatar.jpg" alt="Avatar"></div>
+						<span class="name">Łukasz Holeczek</span>
+						<span class="date">25/6/2013</span>
+						<span class="title">Custom Bootstrap design for new client</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+						<div class="avatar"><img class="img-circle" src="<?php echo $this->basePath()?>/img/avatar2.jpg" alt="Avatar"></div>
+						<span class="name">Megan Abott</span>
+						<span class="date">25/6/2013</span>
+						<span class="title">Custom Bootstrap design for new client</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+						<div class="avatar"><img class="img-circle" src="<?php echo $this->basePath()?>/img/avatar3.jpg" alt="Avatar"></div>
+						<span class="name">Kate Ross</span>
+						<span class="date">25/6/2013</span>
+						<span class="title">Custom Bootstrap design for new client</span>
+                    </a>
+                </li>
+				<li>
+                    <a href="#">
+						<div class="avatar"><img class="img-circle" src="<?php echo $this->basePath()?>/img/avatar4.jpg" alt="Avatar"></div>
+						<span class="name">Julie Blank</span>
+						<span class="date">25/6/2013</span>
+						<span class="title">Custom Bootstrap design for new client</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+						<div class="avatar"><img class="img-circle" src="<?php echo $this->basePath()?>/img/avatar5.jpg" alt="Avatar"></div>
+						<span class="name">Jane Sanders</span>
+						<span class="date">25/6/2013</span>
+						<span class="title">Custom Bootstrap design for new client</span>
+                    </a>
+                </li>
+				<li>
+            		<a href="#">View all messages</a>
+				</li>	
+			</ul>
+
+		</div>
+	</div>
+			
+</div>
+<!-- end: Widgets Area -->
+
+<a id="widgets-area-button" class="hidden-sm hidden-xs open"><i class="icon-reorder"></i></a>				
+				</div><!--/row-->
+		
+	</div><!--/container-->
+	
+		
+	<div class="modal hide fade" id="myModal">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">×</button>
+			<h3>Settings</h3>
+		</div>
+		<div class="modal-body">
+			<p>Here settings can be configured...</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close</a>
+			<a href="#" class="btn btn-primary">Save changes</a>
+		</div>
+	</div>
+	
+	<div class="clearfix"></div>
+	
+	<footer>
+		<div class="container">
+				<span style="text-align:left;float:left">&copy; 2013 <a href="http://bootstrapmaster.com" alt="Twitter Bootstrap Themes">creativeLabs</a></span>
+				<span class="hidden-phone" style="text-align:right;float:right">Powered by: <a href="http://admintemplates.co" alt="Bootstrap Admin Templates">ACME Dashboard</a></span>
+		</div>
+	</footer>
+        <?php echo $this->inlineScript() ?>
+         <!-- Scripts -->
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath() . '/js/custom.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/charts.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/core.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/retina.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/wizard.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/justgage.1.0.1.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/raphael.2.1.0.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/counter.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.sparkline.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.knob.modified.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.masonry.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.gritter.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.uploadify-3.1.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.iphone.toggle.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.raty.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.elfinder.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.noty.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.cleditor.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.uniform.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.chosen.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.flot.resize.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.flot.stack.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.flot.pie.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.flot.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/excanvas.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/dataTables.bootstrap.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.dataTables.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/fullcalendar.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/bootstrap.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/modernizr.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery.ui.touch-punch.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery-ui-1.10.3.min.js', 'text/javascript')
+            ->prependFile($this->basePath() . '/js/jquery-migrate-1.2.1.min.js')
+            ->prependFile($this->basePath() . '/js/jquery-1.10.2.min.js'); 
+        ?>
+    </body>
+</html>

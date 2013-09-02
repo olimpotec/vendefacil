@@ -81,21 +81,21 @@ class TitanUser
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="_create_date", type="datetime", nullable=false)
+     * @ORM\Column(name="_create_date", type="string", nullable=false)
      */
     private $createDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="_update_date", type="datetime", nullable=false)
+     * @ORM\Column(name="_update_date", type="string", nullable=false)
      */
     private $updateDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="_last_logon", type="datetime", nullable=false)
+     * @ORM\Column(name="_last_logon", type="string", nullable=false)
      */
     private $lastLogon;
 
@@ -186,7 +186,7 @@ class TitanUser
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birthday", type="datetime", nullable=true)
+     * @ORM\Column(name="birthday", type="string", nullable=true)
      */
     private $birthday;
 
