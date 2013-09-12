@@ -3,7 +3,7 @@
 namespace Admin\Model;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Zend\Stdlib\Parameters;
 /**
  * TitanUser
  *
@@ -257,6 +257,11 @@ class TitanUser
         $this->group = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
+    public function load ($data)
+    {
+    	foreach ($data as $field => $value)
+    		$this->$field = $value;
+    }
 
     /**
      * Get id

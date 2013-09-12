@@ -1,4 +1,8 @@
-<?php echo $this->doctype(); ?>
+<?php 
+$user = $this->identity();
+
+echo $this->doctype(); 
+?>
 
 <html lang="en">
     <head>
@@ -277,12 +281,12 @@
 						<!-- start: User Dropdown -->
 						<li class="dropdown">
 							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-								<i class="halflings-icon white user"></i> Łukasz Holeczek
+								<i class="halflings-icon white user"></i> <?php echo $user->getName()?>
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><i class="halflings-icon white user"></i> Profile</a></li>
-								<li><a href="login.html"><i class="halflings-icon white off"></i> Logout</a></li>
+								<li><a href="<?php echo $this->basePath() ?>/admin/user/profile"><i class="halflings-icon white user"></i> Profile</a></li>
+								<li><a href="<?php echo $this->basePath() ?>/admin/auth/logout"><i class="halflings-icon white off"></i> Logout</a></li>
 							</ul>
 						</li>
 						<!-- end: User Dropdown -->

@@ -4,6 +4,7 @@ namespace Admin\Controller;
 use Admin\Model\TitanUser;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Admin\Model\DAO\UserDAO;
 
 /**
  * 
@@ -28,9 +29,7 @@ class HomeController extends AbstractActionController
      * @return void
      */
     public function indexAction()
-    {	
-    	$data = $this->getEntityManager()->getRepository('Admin\Model\TitanUser')->findAll();
-    	
+    {
     	return new ViewModel();
     }
 }

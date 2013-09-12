@@ -7,6 +7,9 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Authentication\AuthenticationService;
 use Zend\Authentication\Adapter\DbTable as AuthAdapter;
 use Zend\Db\Sql\Select;
+use Admin\Model\DAO\UserDAO;
+use Admin\Model\TitanUser;
+use Zend\Authentication\Result;
 
 /**
  * Servio respons‡vel pela autentica‹o da aplica‹o
@@ -18,20 +21,18 @@ class Auth
 {
     /**
      * Adapter usado para a autentica‹o
-     * @var Zend\Db\Adapter\Adapter
+     * @var Zend\ServiceManager\ServiceManager
      */
-    private $dbAdapter;
-    
     private $serviceManager;
+
 
     /** 
      * Construtor da classe
      *
      * @return void
      */
-    public function __construct($dbAdapter = null, $serviceManager = null)
+    public function __construct($serviceManager = null)
     {
-        $this->dbAdapter = $dbAdapter;
         $this->serviceManager = $serviceManager;
     }
 
@@ -47,25 +48,23 @@ class Auth
             throw new \Exception("Par‰metros inv‡lidos");
         }
         
-        $password = sha1($params['password']);
-        $auth = new AuthenticationService();
-        $authAdapter = new AuthAdapter($this->dbAdapter);
-        $authAdapter
-            ->setTableName('_user')
-            ->setIdentityColumn('_login')
-            ->setCredentialColumn('_password')
-            ->setIdentity($params['username'])
-            ->setCredential($password);
+        $authService = $this->serviceManager->get('Zend\Authentication\AuthenticationService');
         
-        $result = $auth->authenticate($authAdapter);
+        $adapter = $authService->getAdapter();
+        $adapter->setIdentityValue($params['username']);
+        $adapter->setCredentialValue($params['password']);
         
-        if (! $result->isValid()) {
-            throw new \Exception("Login ou senha inv‡lidos");
-        }
-
-        //salva o user na sess‹o
-        $session = $this->serviceManager->get('Session');        
-        $session->offsetSet('user', $authAdapter->getResultRowObject());
+        $authResult = $authService->authenticate($adapter);
+        
+        if (!$authResult->isValid()) 
+        	throw new \Exception ('Error Login', $authResult->getCode());
+        
+        $loggedUser = $authService->getIdentity();
+        
+        // Strore user on session
+        $session = $this->serviceManager->get('Session');    
+            
+       	$session->offsetSet('user', $loggedUser);
 
         return true;
     }
@@ -76,10 +75,8 @@ class Auth
      * @return void
      */
     public function logout() {
-        $auth = new AuthenticationService();
-        $session = $this->serviceManager->get('Session');
-        $session->offsetUnset('user');
-        $auth->clearIdentity();
+        $authService = $this->serviceManager->get('Zend\Authentication\AuthenticationService');
+        $authService->clearIdentity();
         return true;
     }
 

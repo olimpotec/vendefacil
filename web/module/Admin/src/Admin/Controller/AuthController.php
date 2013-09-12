@@ -3,6 +3,7 @@ namespace Admin\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\Authentication\Result;
 
 /**
  * 
@@ -37,12 +38,11 @@ class AuthController extends AbstractActionController
         $service = $this->getServiceLocator()->get('Admin\Service\Auth');
 
         try {
-        	
-	        $auth = $service->authenticate($data);
-	       
+	        $auth = $service->authenticate($data); 
         }
         catch (\Exception $e)
-        {
+        {	
+        	
         	
         	//login inv‡lido, volta a p‡gina de login
         	return  $this->redirect()->toRoute(null, array('controller' => 'index', 'action' => 'login'));

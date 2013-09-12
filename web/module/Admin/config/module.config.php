@@ -1,4 +1,5 @@
 <?php
+use Admin\Model\TitanUser;
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -67,11 +68,14 @@ return array(
         		'Session' => function($sm) {
         			return new Zend\Session\Container('vendefacil');
         		},
-        		'Admin\Service\Auth' => function($sm) {
+        		'Admin\Service\Auth' => function($serviceManager) {
         			
-        			$dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-        			$dbAdapter->getDriver()->getConnection()->execute ('SET SEARCH_PATH = titan,version');
-        			return new Admin\Service\Auth($dbAdapter, $sm);
+        			return new Admin\Service\Auth($serviceManager);
+        		},
+        		
+        		'Zend\Authentication\AuthenticationService' => function($serviceManager) {
+        			
+        			return $serviceManager->get('doctrine.authenticationservice.orm_default');
         		},
         ),
     ),
@@ -90,6 +94,7 @@ return array(
             'Admin\Controller\Index' => 'Admin\Controller\IndexController',
         	'Admin\Controller\Auth' => 'Admin\Controller\AuthController',
         	'Admin\Controller\Home' => 'Admin\Controller\HomeController',
+        	'Admin\Controller\User' => 'Admin\Controller\UserController',
         ),
     ),
     'view_manager' => array(
@@ -127,7 +132,16 @@ return array(
     								__NAMESPACE__ . 'Admin\Model' => __NAMESPACE__ . '_driver'
     						)
     				)
-    		)
+    		),
+    		'authentication' => array(
+    				'orm_default' => array(
+    						'object_manager' => 'Doctrine\ORM\EntityManager',
+    						'identity_class' => 'Admin\Model\TitanUser',
+    						'identity_property' => 'login',
+    						'credential_property' => 'password',
+    						'credential_callable' => 'Admin\Model\DAO\UserDAO::authenticate',
+    				),
+    		),
     ),
    
 );

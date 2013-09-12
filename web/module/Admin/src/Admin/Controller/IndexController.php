@@ -16,7 +16,7 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        return $this->redirect()->toUrl('index/login');
+        return $this->redirect()->toUrl('admin/index/login');
     }
     
     public function loginAction()
