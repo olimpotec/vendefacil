@@ -12,6 +12,7 @@ namespace Admin;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router\RouteMatch;
+use Admin\Service\Notification;
 
 class Module
 {
@@ -28,8 +29,8 @@ class Module
         $moduleRouteListener->attach($eventManager);
         $app = $e->getParam('application');
         $app->getEventManager()->attach('dispatch', array($this, 'setLayout'));
-		$eventManager->attach (MvcEvent::EVENT_ROUTE, array($this, 'isLogged'));        
-        //$eventManager->attach(\Zend\Mvc\MvcEvent::EVENT_FINISH, array($this, 'onDispatch'));
+		$eventManager->attach (MvcEvent::EVENT_ROUTE, array($this, 'isLogged'));
+		Notification::singleton($e->getApplication()->getServiceManager());
     }
     
     public function getConfig()

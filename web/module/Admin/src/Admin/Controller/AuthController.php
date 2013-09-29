@@ -1,9 +1,10 @@
 <?php
 namespace Admin\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use Admin\Controller\VFAbstracController;
 use Zend\View\Model\ViewModel;
 use Zend\Authentication\Result;
+use Admin\Service\Notification;
 
 /**
  * 
@@ -11,7 +12,7 @@ use Zend\Authentication\Result;
  * @package Controller
  * @author  M‡rcio Silva<marcio@olimpotec.com>
  */
-class AuthController extends AbstractActionController
+class AuthController extends VFAbstractController
 {
     /**
      * Mostra o formul‡rio de login
@@ -42,7 +43,7 @@ class AuthController extends AbstractActionController
         }
         catch (\Exception $e)
         {	
-        	
+        	Notification::singleton()->addError ($this->translate('Invalid Login, try again!'));
         	
         	//login inv‡lido, volta a p‡gina de login
         	return  $this->redirect()->toRoute(null, array('controller' => 'index', 'action' => 'login'));

@@ -1,29 +1,19 @@
 <?php
 namespace Admin\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use Admin\Controller\VFAbstracController;
 use Zend\View\Model\ViewModel;
 use Admin\Model\DAO\UserDAO;
 use Admin\Model\TitanUser;
-
+use Admin\Service\Notification;
 /**
  * 
  * @category Admin
  * @package Controller
  * @author  M‡rcio Silva<marcio@olimpotec.com>
  */
-class UserController extends AbstractActionController
+class UserController extends VFAbstractController
 {
-    
-	protected $em;
-	
-	public function getEntityManager()
-	{
-		if (null === $this->em)
-			$this->em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
-	
-		return $this->em;
-	}
 	
     /**
      * Profile do usu‡rio
@@ -41,17 +31,28 @@ class UserController extends AbstractActionController
     public function updateAction()
     {	
     	$data = $this->getRequest()->getPost();
+    	
     	$userDAO = new UserDAO($this->getEntityManager());
-    
-    	$userEntity = $userDAO->findById($data['id']);
     	
-    	$userEntity->load($this->getRequest()->getPost());
+    	try {
+    		$userEntity = $userDAO->findById($data['id']);
+    		 
+    		$userEntity->load($this->getRequest()->getPost());
+    		 
+    		$userDAO->save ($userEntity);
+    		 
+    		$session = $this->getServiceLocator()->get('Session');
+    		 
+    		$session->offsetSet('user', $userEntity);
+    		
+    		Notification::singleton()->addMessage ($this->translate('Profile sucessfull updated!'));
+    	}
+    	catch (\Exception $e)
+    	{
+    		Notification::singleton()->addMessage ($this->translate('Error on update your Profile!'));
+    	}
     	
-    	$userDAO->save ($userEntity);
-    	
-    	$session = $this->getServiceLocator()->get('Session');
-    	
-    	$session->offsetSet('user', $userEntity);
+    	Notification::singleton()->save ();
     	
     	return $this->redirect()->toRoute(null, array('controller' => 'user', 'action' => 'profile'));
     }
