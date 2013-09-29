@@ -51,16 +51,16 @@ class TitanMedia
     private $description;
 
     /**
-     * @var \DateTime
+     * @var datetimeutc
      *
-     * @ORM\Column(name="_insert", type="datetime", nullable=false)
+     * @ORM\Column(name="_insert", type="datetimeutc", nullable=false)
      */
     private $insert;
 
     /**
-     * @var \DateTime
+     * @var datetimeutc
      *
-     * @ORM\Column(name="_update", type="datetime", nullable=false)
+     * @ORM\Column(name="_update", type="datetimeutc", nullable=false)
      */
     private $update;
 
@@ -181,7 +181,7 @@ class TitanMedia
     /**
      * Set insert
      *
-     * @param \DateTime $insert
+     * @param datetimeutc $insert
      * @return TitanMedia
      */
     public function setInsert($insert)
@@ -194,7 +194,7 @@ class TitanMedia
     /**
      * Get insert
      *
-     * @return \DateTime 
+     * @return datetimeutc 
      */
     public function getInsert()
     {
@@ -204,7 +204,7 @@ class TitanMedia
     /**
      * Set update
      *
-     * @param \DateTime $update
+     * @param datetimeutc $update
      * @return TitanMedia
      */
     public function setUpdate($update)
@@ -217,7 +217,7 @@ class TitanMedia
     /**
      * Get update
      *
-     * @return \DateTime 
+     * @return datetimeutc 
      */
     public function getUpdate()
     {

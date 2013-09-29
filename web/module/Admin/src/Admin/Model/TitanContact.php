@@ -23,16 +23,16 @@ class TitanContact
     private $id;
 
     /**
-     * @var \DateTime
+     * @var datetimeutc
      *
-     * @ORM\Column(name="_send_date", type="datetime", nullable=false)
+     * @ORM\Column(name="_send_date", type="datetimeutc", nullable=false)
      */
     private $sendDate;
 
     /**
-     * @var \DateTime
+     * @var datetimeutc
      *
-     * @ORM\Column(name="_response_date", type="datetime", nullable=true)
+     * @ORM\Column(name="_response_date", type="datetimeutc", nullable=true)
      */
     private $responseDate;
 
@@ -103,7 +103,7 @@ class TitanContact
     /**
      * Set sendDate
      *
-     * @param \DateTime $sendDate
+     * @param datetimeutc $sendDate
      * @return TitanContact
      */
     public function setSendDate($sendDate)
@@ -116,7 +116,7 @@ class TitanContact
     /**
      * Get sendDate
      *
-     * @return \DateTime 
+     * @return datetimeutc 
      */
     public function getSendDate()
     {
@@ -126,7 +126,7 @@ class TitanContact
     /**
      * Set responseDate
      *
-     * @param \DateTime $responseDate
+     * @param datetimeutc $responseDate
      * @return TitanContact
      */
     public function setResponseDate($responseDate)
@@ -139,7 +139,7 @@ class TitanContact
     /**
      * Get responseDate
      *
-     * @return \DateTime 
+     * @return datetimeutc 
      */
     public function getResponseDate()
     {

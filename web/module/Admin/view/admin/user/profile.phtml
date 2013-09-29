@@ -16,7 +16,7 @@ $user = $this->identity();
 					  <label class="control-label" for="login"><?php echo $this->translate('Your login:')?></label>
 					  <div class="controls">
 						 <input type="hidden" name="id" value="<?php echo $user->getId()?>" />
-						 <input class="form-control disabled" id="login" name="_login" type="text" placeholder="<?php echo $this->translate('Type your login...')?>" value="<?php echo $user->getLogin()?>" disabled="" />
+						 <input class="form-control disabled" id="login" name="login" type="text" placeholder="<?php echo $this->translate('Type your login...')?>" value="<?php echo $user->getLogin()?>" disabled="" />
 					  </div>
 					</div>
 					

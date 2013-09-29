@@ -37,16 +37,16 @@ class TitanInstance
     private $description;
 
     /**
-     * @var \DateTime
+     * @var datetimeutc
      *
-     * @ORM\Column(name="_create", type="datetime", nullable=false)
+     * @ORM\Column(name="_create", type="datetimeutc", nullable=false)
      */
     private $create;
 
     /**
-     * @var \DateTime
+     * @var datetimeutc
      *
-     * @ORM\Column(name="_update", type="datetime", nullable=false)
+     * @ORM\Column(name="_update", type="datetimeutc", nullable=false)
      */
     private $update;
 
@@ -131,7 +131,7 @@ class TitanInstance
     /**
      * Set create
      *
-     * @param \DateTime $create
+     * @param datetimeutc $create
      * @return TitanInstance
      */
     public function setCreate($create)
@@ -144,7 +144,7 @@ class TitanInstance
     /**
      * Get create
      *
-     * @return \DateTime 
+     * @return datetimeutc 
      */
     public function getCreate()
     {
@@ -154,7 +154,7 @@ class TitanInstance
     /**
      * Set update
      *
-     * @param \DateTime $update
+     * @param datetimeutc $update
      * @return TitanInstance
      */
     public function setUpdate($update)
@@ -167,7 +167,7 @@ class TitanInstance
     /**
      * Get update
      *
-     * @return \DateTime 
+     * @return datetimeutc 
      */
     public function getUpdate()
     {

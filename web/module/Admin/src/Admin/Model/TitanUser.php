@@ -3,7 +3,7 @@
 namespace Admin\Model;
 
 use Doctrine\ORM\Mapping as ORM;
-use Zend\Stdlib\Parameters;
+
 /**
  * TitanUser
  *
@@ -79,23 +79,23 @@ class TitanUser
     private $language;
 
     /**
-     * @var \DateTime
+     * @var datetimeutc
      *
-     * @ORM\Column(name="_create_date", type="string", nullable=false)
+     * @ORM\Column(name="_create_date", type="datetimeutc", nullable=false)
      */
     private $createDate;
 
     /**
-     * @var \DateTime
+     * @var datetimeutc
      *
-     * @ORM\Column(name="_update_date", type="string", nullable=false)
+     * @ORM\Column(name="_update_date", type="datetimeutc", nullable=false)
      */
     private $updateDate;
 
     /**
-     * @var \DateTime
+     * @var datetimeutc
      *
-     * @ORM\Column(name="_last_logon", type="string", nullable=false)
+     * @ORM\Column(name="_last_logon", type="datetimeutc", nullable=false)
      */
     private $lastLogon;
 
@@ -184,9 +184,9 @@ class TitanUser
     private $cpf;
 
     /**
-     * @var \DateTime
+     * @var datetimeutc
      *
-     * @ORM\Column(name="birthday", type="string", nullable=true)
+     * @ORM\Column(name="birthday", type="datetimeutc", nullable=true)
      */
     private $birthday;
 
@@ -257,11 +257,6 @@ class TitanUser
         $this->group = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
-    public function load ($data)
-    {
-    	foreach ($data as $field => $value)
-    		$this->$field = $value;
-    }
 
     /**
      * Get id
@@ -460,7 +455,7 @@ class TitanUser
     /**
      * Set createDate
      *
-     * @param \DateTime $createDate
+     * @param datetimeutc $createDate
      * @return TitanUser
      */
     public function setCreateDate($createDate)
@@ -473,7 +468,7 @@ class TitanUser
     /**
      * Get createDate
      *
-     * @return \DateTime 
+     * @return datetimeutc 
      */
     public function getCreateDate()
     {
@@ -483,7 +478,7 @@ class TitanUser
     /**
      * Set updateDate
      *
-     * @param \DateTime $updateDate
+     * @param datetimeutc $updateDate
      * @return TitanUser
      */
     public function setUpdateDate($updateDate)
@@ -496,7 +491,7 @@ class TitanUser
     /**
      * Get updateDate
      *
-     * @return \DateTime 
+     * @return datetimeutc 
      */
     public function getUpdateDate()
     {
@@ -506,7 +501,7 @@ class TitanUser
     /**
      * Set lastLogon
      *
-     * @param \DateTime $lastLogon
+     * @param datetimeutc $lastLogon
      * @return TitanUser
      */
     public function setLastLogon($lastLogon)
@@ -519,7 +514,7 @@ class TitanUser
     /**
      * Get lastLogon
      *
-     * @return \DateTime 
+     * @return datetimeutc 
      */
     public function getLastLogon()
     {
@@ -805,7 +800,7 @@ class TitanUser
     /**
      * Set birthday
      *
-     * @param \DateTime $birthday
+     * @param datetimeutc $birthday
      * @return TitanUser
      */
     public function setBirthday($birthday)
@@ -818,7 +813,7 @@ class TitanUser
     /**
      * Get birthday
      *
-     * @return \DateTime 
+     * @return datetimeutc 
      */
     public function getBirthday()
     {

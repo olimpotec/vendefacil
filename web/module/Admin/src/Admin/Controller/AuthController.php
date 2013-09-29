@@ -43,6 +43,7 @@ class AuthController extends VFAbstractController
         }
         catch (\Exception $e)
         {	
+        	die ($e->getMessage());
         	Notification::singleton()->addError ($this->translate('Invalid Login, try again!'));
         	
         	//login inv‡lido, volta a p‡gina de login

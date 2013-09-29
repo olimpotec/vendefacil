@@ -13,6 +13,7 @@ use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router\RouteMatch;
 use Admin\Service\Notification;
+use Doctrine\DBAL\Types\Type;
 
 class Module
 {
@@ -31,6 +32,8 @@ class Module
         $app->getEventManager()->attach('dispatch', array($this, 'setLayout'));
 		$eventManager->attach (MvcEvent::EVENT_ROUTE, array($this, 'isLogged'));
 		Notification::singleton($e->getApplication()->getServiceManager());
+		
+		$this->setUpCustomTypes($e);
     }
     
     public function getConfig()
@@ -114,5 +117,16 @@ class Module
     	$response->setStatusCode(302);
     
     	return $response;
+    }
+    
+    public function setUpCustomTypes (MvcEvent $e)
+    {
+    	
+    	Type::addType('datetimeutc', 'Admin\Types\DateTimeUTC');
+    	
+    	$entityManager = $e->getApplication()->getServiceManager()->get('doctrine.entitymanager.orm_default');
+    	
+    	$entityManager->getConnection()->getDatabasePlatform()->registerDoctrineTypeMapping('TIMESTAMP', 'datetimeutc');
+    	
     }
 }

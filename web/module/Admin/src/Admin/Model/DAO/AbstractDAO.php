@@ -30,10 +30,24 @@ abstract class AbstractDAO
 		return $this->getEntityManager()->getRepository($this->_entityNamespace)->find($id);
 	}
 	
-	public function save ($entity)
-	{	
+	public function save ($entity, $data)
+	{
+		$reflectionClass = new \ReflectionClass($this->_entityNamespace);
+		
+		foreach ($data as $columns => $value)
+		{
+			$property = $reflectionClass->getProperty($columns);
+			$property->setAccessible(true);
+			
+			$property->setValue($entity, $value);
+			
+			$property->setAccessible(false);
+		}
+		
 		
 		$this->getEntityManager()->persist($entity);
+		
 		$this->getEntityManager()->flush();
+		
 	}
 }

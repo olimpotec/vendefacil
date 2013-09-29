@@ -6,6 +6,7 @@ use Zend\View\Model\ViewModel;
 use Admin\Model\DAO\UserDAO;
 use Admin\Model\TitanUser;
 use Admin\Service\Notification;
+use Doctrine\DBAL\DBALException;
 /**
  * 
  * @category Admin
@@ -36,23 +37,21 @@ class UserController extends VFAbstractController
     	
     	try {
     		$userEntity = $userDAO->findById($data['id']);
-    		 
-    		$userEntity->load($this->getRequest()->getPost());
-    		 
-    		$userDAO->save ($userEntity);
-    		 
+    		
+    		$userDAO->save ($userEntity, $data);
+    		
     		$session = $this->getServiceLocator()->get('Session');
     		 
     		$session->offsetSet('user', $userEntity);
     		
     		Notification::singleton()->addMessage ($this->translate('Profile sucessfull updated!'));
     	}
+    	
     	catch (\Exception $e)
     	{
-    		Notification::singleton()->addMessage ($this->translate('Error on update your Profile!'));
+    		Notification::singleton()->addMessage ($this->translate('Error on update your Profile! '. $e->getMessage()));
     	}
     	
-    	Notification::singleton()->save ();
     	
     	return $this->redirect()->toRoute(null, array('controller' => 'user', 'action' => 'profile'));
     }

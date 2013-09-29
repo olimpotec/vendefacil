@@ -51,9 +51,9 @@ class TitanFile
     private $description;
 
     /**
-     * @var \DateTime
+     * @var datetimeutc
      *
-     * @ORM\Column(name="_create_date", type="datetime", nullable=false)
+     * @ORM\Column(name="_create_date", type="datetimeutc", nullable=false)
      */
     private $createDate;
 
@@ -174,7 +174,7 @@ class TitanFile
     /**
      * Set createDate
      *
-     * @param \DateTime $createDate
+     * @param datetimeutc $createDate
      * @return TitanFile
      */
     public function setCreateDate($createDate)
@@ -187,7 +187,7 @@ class TitanFile
     /**
      * Get createDate
      *
-     * @return \DateTime 
+     * @return datetimeutc 
      */
     public function getCreateDate()
     {

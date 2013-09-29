@@ -30,9 +30,9 @@ class TitanSimple
     private $content;
 
     /**
-     * @var \DateTime
+     * @var datetimeutc
      *
-     * @ORM\Column(name="_update_date", type="datetime", nullable=false)
+     * @ORM\Column(name="_update_date", type="datetimeutc", nullable=false)
      */
     private $updateDate;
 
@@ -84,7 +84,7 @@ class TitanSimple
     /**
      * Set updateDate
      *
-     * @param \DateTime $updateDate
+     * @param datetimeutc $updateDate
      * @return TitanSimple
      */
     public function setUpdateDate($updateDate)
@@ -97,7 +97,7 @@ class TitanSimple
     /**
      * Get updateDate
      *
-     * @return \DateTime 
+     * @return datetimeutc 
      */
     public function getUpdateDate()
     {
