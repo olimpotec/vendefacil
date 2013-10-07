@@ -20,9 +20,18 @@ abstract class AbstractDAO
 		return $this->_em;
 	}
 	
-	public function findAll ()
+	public function findAll ($offset = 0, $limit = 0)
 	{
-		return $this->getEntityManager()->getRepository($this->_entityNamespace)->findAll();
+		$qb = $this->getEntityManager()->createQueryBuilder();
+		
+		$qb->select('e')->from($this->_entityNamespace, 'e')->setFirstResult($offset);
+		
+		if($limit)
+			$qb->setMaxResults($limit);
+		
+		$query = $qb->getQuery();
+		
+		return $query->getResult();
 	}
 	
 	public function findById ($id)
@@ -36,18 +45,42 @@ abstract class AbstractDAO
 		
 		foreach ($data as $columns => $value)
 		{
-			$property = $reflectionClass->getProperty($columns);
-			$property->setAccessible(true);
-			
-			$property->setValue($entity, $value);
-			
-			$property->setAccessible(false);
+			try{
+				$property = $reflectionClass->getProperty($columns);
+				$property->setAccessible(true);
+					
+				$property->setValue($entity, $value);
+					
+				$property->setAccessible(false);
+			}
+			catch (\Exception $e)
+			{
+				
+			}
 		}
 		
 		
-		$this->getEntityManager()->persist($entity);
+		$this->getEntityManager()->merge($entity);
 		
 		$this->getEntityManager()->flush();
 		
+	}
+	
+	public function delete ($id)
+	{
+		try {
+			$this->getEntityManager()->beginTransaction();
+			
+			$entity = $this->findById($id);
+			
+			$this->getEntityManager()->remove($entity);
+			$this->getEntityManager()->commit();
+			$this->getEntityManager()->flush();
+		}
+		catch (\Exception $e)
+		{
+			$this->getEntityManager()->rollback();
+			die($e->getMessage());
+		}
 	}
 }

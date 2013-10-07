@@ -1,0 +1,95 @@
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="box">
+			<div class="box-header">
+				<h2><i class="icon-edit"></i><?php echo $this->translate('Edit '. $this->company->getCompanyName() .' informations')?></h2>
+				
+			</div>
+			<div class="box-content">
+				<form class="form-horizontal" method="post" action="<?php echo $this->url(null, array ('controller' => 'company', 'action' => 'editsave'))?>"> 
+				  <fieldset class="col-sm-12">	
+					<div class="form-group">
+					  <label class="control-label" for="login"><?php echo $this->translate('Company Name:')?></label>
+					  <div class="controls">
+						 <input type="hidden" name="companyId" value="<?php echo $this->company->getCompanyId()?>" />
+						 <input class="form-control disabled" id="company_name" name="companyName" type="text" placeholder="<?php echo $this->translate('Type company name')?>" value="<?php echo $this->company->getCompanyName()?>"/>
+					  </div>
+					</div>
+					
+					<div class="form-group">
+					  <label class="control-label" for="login"><?php echo $this->translate('CNPJ:')?></label>
+					  <div class="controls">
+						
+						 <input class="form-control disabled" id="cnpj" name="cnpj" type="text" placeholder="<?php echo $this->translate('Type CNPJ')?>" value="<?php echo $this->company->getCnpj()?>"/>
+					  </div>
+					</div>
+					
+					<div class="form-group">
+					  <label class="control-label" for="login"><?php echo $this->translate('State Registration:')?></label>
+					  <div class="controls">
+						
+						 <input class="form-control disabled" id="state_registration" name="stateRegistration" type="text" placeholder="<?php echo $this->translate('Type state registration')?>" value="<?php echo $this->company->getStateRegistration()?>"/>
+					  </div>
+					</div>
+					
+					<div class="form-group">
+					  <label class="control-label" for="login"><?php echo $this->translate('City Registration:')?></label>
+					  <div class="controls">
+						
+						 <input class="form-control disabled" id="cityRegistration" name="cityRegistration" type="text" placeholder="<?php echo $this->translate('Type city registration')?>" value="<?php echo $this->company->getCityRegistration()?>"/>
+					  </div>
+					</div>  
+					
+					<div class="form-group">
+					  <label class="control-label" for="foundedAt"><?php echo $this->translate('Founded At:')?></label>
+					  <div class="controls">
+						
+						 <input class="form-control disabled datepicker" id="founded_at" name="founded_at" type="text" placeholder="<?php echo $this->translate('Type foundation date')?>" value="<?php echo $this->company->getFoundedAt()->format($this->translate('m/d/Y'))?>"/>
+					  </div>
+					</div>  
+					
+					<div class="form-group">
+					  <label class="control-label" for="login"><?php echo $this->translate('City:')?></label>
+					  <div class="controls">
+						
+						 <input class="form-control disabled autocomplete" 
+						 id="city_registration" 
+						 name="city_registration" 
+						 type="text"
+						 data-auto-options='{"url":"<?php echo $this->url(null, array ('controller' => 'service', 'action' => 'cities'))?>","source":"#cityId"}'
+						 placeholder="<?php echo $this->translate('Type city')?>" 
+						 value="<?php echo $this->company->getCity()->getName()?>" />
+						 <input type="hidden" name="cityId" id="cityId" value="<?php echo $this->company->getCity()->getId()?>" />
+					  </div>
+					</div>    
+				
+					<div class="form-actions">
+					  <button type="submit" class="btn btn-primary"><?php echo $this->translate('Save Changes')?></button>
+					  <button type="reset" class="btn"><?php echo $this->translate('Cancel')?></button>
+					  
+					</div>
+				  </fieldset>
+				</form>   
+				
+					<div id="windowTitleDialog" class="modal  fade" tabindex="-1" role="dialog" aria-labelledby="windowTitleLabel" aria-hidden="true">
+				<div class="modal-header">
+					<a href="#" class="close" data-dismiss="modal">&times;</a>
+					<h3>Please enter a new title for this window.</h3>
+					</div>
+				<div class="modal-body">
+					<div class="divDialogElements">
+						<input class="xlarge" id="xlInput" name="xlInput" type="text" />
+						</div>
+					</div>
+				<div class="modal-footer">
+					<a href="#" class="btn" onclick="closeDialog ();">Cancel</a>
+					<a href="#" class="btn btn-primary" onclick="okClicked ();">OK</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div><!--/col-->
+
+</div><!--/row-->

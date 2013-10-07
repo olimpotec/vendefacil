@@ -23,6 +23,7 @@ echo $this->doctype();
 		
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+        				->prependStylesheet($this->basePath() . '/css/cupertino/jquery-ui-1.10.3.css')
                         ->prependStylesheet($this->basePath() . '/css/style.min.css')
                         ->prependStylesheet($this->basePath() . '/css/retina.css')
                         ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
@@ -342,6 +343,7 @@ echo $this->doctype();
 			
 			<!-- start: Content -->
 			<div id="content" class="col-sm-11">
+				<?php echo $this->navigation('navigation')->breadcrumbs()->setMinDepth(0);?>
 				<?php echo $this->content; ?>
 			
 			
@@ -546,14 +548,14 @@ echo $this->doctype();
 	
 	<footer>
 		<div class="container">
-				<span style="text-align:left;float:left">&copy; 2013 <a href="http://bootstrapmaster.com" alt="Twitter Bootstrap Themes">creativeLabs</a></span>
-				<span class="hidden-phone" style="text-align:right;float:right">Powered by: <a href="http://admintemplates.co" alt="Bootstrap Admin Templates">ACME Dashboard</a></span>
+				<span style="text-align:left;float:left">&copy; <?php echo date('Y')?> <a href="http://olimpotec.com" alt="Twitter Bootstrap Themes">Olimpo Tecnologia LTDA</a></span>
+				<span class="hidden-phone" style="text-align:right;float:right">Powered by: <a href="http://admintemplates.co" alt="Bootstrap Admin Templates">Olimpo</a></span>
 		</div>
 	</footer>
         <?php echo $this->inlineScript() ?>
          <!-- Scripts -->
         <?php echo $this->headScript()
-            ->prependFile($this->basePath() . '/js/custom.min.js',   'text/javascript')
+            ->prependFile($this->basePath() . '/js/custom.js',   'text/javascript')
             ->prependFile($this->basePath() . '/js/charts.min.js',   'text/javascript')
             ->prependFile($this->basePath() . '/js/core.min.js',   'text/javascript')
             ->prependFile($this->basePath() . '/js/retina.js',   'text/javascript')

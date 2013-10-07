@@ -1,0 +1,48 @@
+<div class="row">
+<a href="<?php echo $this->url(null, array ('controller' => 'company', 'action' => 'add'))?>" class="btn btn-large btn-primary">Add Company</a>
+</div>
+<div class="row">
+
+<table class="table table-striped table-bordered bootstrap-datatable datatable">
+	  <thead>
+		  <tr>
+			  <th><?php echo $this->translate('Company Name')?></th>
+			  <th><?php echo $this->translate('CNPJ')?></th>
+			  <th><?php echo $this->translate('City')?></th>
+			  <th><?php echo $this->translate('State')?></th>
+			  <th><?php echo $this->translate('Founded At')?></th>
+			  <th><?php echo $this->translate('Status')?></th>
+			  <th>Actions</th>
+		  </tr>
+	  </thead>   
+	  <tbody>
+	  	<?php foreach ($this->companies as $company):?>
+		<tr>
+			<td><?php echo $company->getCompanyName()?></td>
+			<td class="center"><?php echo $company->getCnpj()?></td>
+			<td class="center"><?php echo $company->getCity()->getName()?></td>
+			<td class="center"><?php echo $company->getCity()->getState()->getUf()?></td>
+			<td class="center"><?php echo ($company->getFoundedAt())? $company->getFoundedAt()->format('d-m-Y'): '' ?></td>
+			<td class="center">
+				<span class="label label-success">Active</span>
+			</td>
+			<td class="center">
+				<a class="btn btn-success" href="<?php echo $this->url(null, array ('controller' => 'company', 'action' => 'view'))?>?item=<?php echo $company->getCompanyId()?>">
+					<i class="icon-zoom-in "></i>  
+				</a>
+				<a class="btn btn-info" href="<?php echo $this->url(null, array ('controller' => 'company', 'action' => 'edit'))?>?item=<?php echo $company->getCompanyId()?>">
+					<i class="icon-edit "></i>  
+				</a>
+				<a class="btn btn-danger" href="<?php echo $this->url(null, array ('controller' => 'company', 'action' => 'delete'))?>?item=<?php echo $company->getCompanyId()?>">
+					<i class="icon-trash "></i> 
+				</a>
+			</td>
+		</tr>
+		<?php endforeach;?>
+	  </tbody>
+  </table>        
+</div><!--/row-->
+				
+			
+       
+					

@@ -220,6 +220,22 @@ function template_functions(){
 		var options = $.parseJSON($(this).attr('data-noty-options'));
 		noty(options);
 	});
+	
+	$('.autocomplete').autocomplete({
+		 source: function( request, response ) {
+			 var options = $.parseJSON($(this.element).attr('data-auto-options'));
+			 $.getJSON( options.url, {term: ( request.term )}, response );
+		  },
+	      minLength: 2,
+	      select: function( event, ui ) {
+	    	var options = $.parseJSON($(this).attr('data-auto-options'));
+	        //alert( ui.item ? "Selected: " + ui.item.value + " aka " + ui.item.id : "Nothing selected, input was " + this.value );
+	    	
+	    	$(options.source).val (ui.item.id);
+	    	
+	      }
+		}
+	);
 
 	/* ---------- Uniform ---------- */
 	$("input:checkbox, input:radio, input:file").not('[data-no-uniform="true"],#uniform-is-ajax').uniform();

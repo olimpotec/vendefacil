@@ -40,7 +40,7 @@ return array(
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/[:controller[/:action]]',
+                            'route'    => '/[:controller[/:action][/]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
@@ -77,6 +77,7 @@ return array(
         			
         			return $serviceManager->get('doctrine.authenticationservice.orm_default');
         		},
+        		'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory', 
         ),
     ),
     'translator' => array(
@@ -95,6 +96,8 @@ return array(
         	'Admin\Controller\Auth' => 'Admin\Controller\AuthController',
         	'Admin\Controller\Home' => 'Admin\Controller\HomeController',
         	'Admin\Controller\User' => 'Admin\Controller\UserController',
+        	'Admin\Controller\Company' => 'Admin\Controller\CompanyController',
+        		'Admin\Controller\Service' => 'Admin\Controller\ServiceController',
         ),
     ),
     'view_manager' => array(
@@ -112,6 +115,9 @@ return array(
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
+    	'strategies' => array(
+    				'ViewJsonStrategy',
+    	),
     ),
     // Placeholder for console routes
     'console' => array(

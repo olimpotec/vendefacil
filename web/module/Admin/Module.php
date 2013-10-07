@@ -14,6 +14,7 @@ use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router\RouteMatch;
 use Admin\Service\Notification;
 use Doctrine\DBAL\Types\Type;
+use Zend\Navigation\Navigation;
 
 class Module
 {
@@ -34,13 +35,18 @@ class Module
 		Notification::singleton($e->getApplication()->getServiceManager());
 		
 		$this->setUpCustomTypes($e);
+		
     }
     
     public function getConfig()
     {
-        return include __DIR__ . '/config/module.config.php';
+       $config =  ( include __DIR__ . '/config/module.config.php');
+       $config ['navigation'] = (include __DIR__ . '/config/navigation.config.php');
+       
+       return $config;
     }
 
+    
     public function getAutoloaderConfig()
     {
         return array(
@@ -68,7 +74,12 @@ class Module
         	
         	return;
         }
-       
+        
+        if (false !== strpos($controller, 'Admin\Controller\Service')) {
+        	 
+        	return;
+        } 
+      
       
         // Set the layout template
         $viewModel = $e->getViewModel();
